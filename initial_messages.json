@@ -1,16 +1,19 @@
 {
+  "mid" : "1",
+  "to_name" : "anonymous",
+  "from_name" : "me",
   "messages" : {
     "-K2ib4H77rj0LYewF7dP" : {
       "text" : "Hello",
-      "name" : "anonymous"
+      "photo" : "null"
     },
     "-K2ib5JHRbbL0NrztUfO" : {
       "text" : "How are you",
-      "name" : "anonymous"
+      "photo" : "null"
     },
     "-K2ib62mjHh34CAUbide" : {
       "text" : "I am fine",
-      "name" : "anonymous"
+      "photo" : "null"
     }
   }
 }

@@ -13,20 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.firebase.codelab.friendlychat;
+package com.google.firebase.codelab.friendlychat.model;
 
 public class FriendlyMessage {
-
     private String text;
-    private String name;
     private String photoUrl;
+    private String avatarUrl;
+    private String toName;
+    private String fromName;
 
     public FriendlyMessage() {
     }
 
-    public FriendlyMessage(String text, String name, String photoUrl) {
+    public FriendlyMessage(String text, String avatarUrl, String toName, String fromName, String photoUrl) {
         this.text = text;
-        this.name = name;
+        this.avatarUrl = avatarUrl;
+        this.toName = toName;
+        this.fromName = fromName;
         this.photoUrl = photoUrl;
     }
 
@@ -38,12 +41,29 @@ public class FriendlyMessage {
         this.text = text;
     }
 
-    public String getName() {
-        return name;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getToName() {
+        return toName;
+    }
+
+    public void setToName(String toName) {
+        this.toName = toName;
+    }
+
+    public String getFromName() {
+        return fromName;
+    }
+
+    public void setFromName(String fromName) {
+        this.fromName = fromName;
     }
 
     public String getPhotoUrl() {
