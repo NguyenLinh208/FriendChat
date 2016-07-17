@@ -15,6 +15,7 @@
  */
 package com.google.firebase.codelab.friendlychat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -97,11 +98,16 @@ public class MainActivity extends AppCompatActivity
     private String userName;
     private String myUserName;
     private ImageView selectPic;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Uploading");
+        progressDialog.setCanceledOnTouchOutside(false);
 
         Intent extras = getIntent();
         if (extras != null) {
@@ -173,14 +179,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            progressDialog.show();
             Uri uri = data.getData();
-            mProgressBar.setVisibility(View.VISIBLE);
             Bitmap imageBitmap = getBitmap(uri);
             if (imageBitmap == null) {
             } else {
-
                 uploadBitmapToStorage(imageBitmap);
-                mProgressBar.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -230,7 +234,6 @@ public class MainActivity extends AppCompatActivity
         mFirebaseDatabaseReference.child(MESSAGES_CHILD).child(initChatRoomName(myUserName, userName)).push().setValue(friendlyMessage);
         mMessageEditText.setText("");
         mMessageRecyclerView.scrollToPosition(mFirebaseAdapter.getItemCount());
-        ;
     }
 
     /**
@@ -342,6 +345,7 @@ public class MainActivity extends AppCompatActivity
                                 lastVisiblePosition == (positionStart - 1))) {
                     mMessageRecyclerView.scrollToPosition(positionStart);
                 }
+                progressDialog.hide();
             }
         });
 

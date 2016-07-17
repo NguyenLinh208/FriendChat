@@ -3,7 +3,7 @@ package com.google.firebase.codelab.friendlychat.viewholder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 
 import com.google.firebase.codelab.friendlychat.R;
 
@@ -19,6 +19,7 @@ public class ImageMessageViewHolder extends RecyclerView.ViewHolder {
     public ImageMessageViewHolder(View v) {
         super(v);
         messengerImageView = (CircleImageView) itemView.findViewById(R.id.messengerImageView);
-        imageView = (ImageView) itemView.findViewById(R.id.chat_image);
+        imageView = (ImageView) itemView.findViewById(R.id.chatImage);
+
     }
 }
